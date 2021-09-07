@@ -1,10 +1,15 @@
 var express=require('express')
 var app = express()
 var fs=require('fs')
+var http = require('http').Server(app);
 
-var http=require('http')
-server = require('http').createServer(app)
+// var http=require('http')
+// server = require('http').createServer(app)
 // // io = io.listen(server);
+
+http.listen(process.env.PORT || 3000, function(){
+    console.log('listening on', http.address().port);
+  })
 
 app.get('/', function(req, res) {
     res.send('MArksheet ApI');
@@ -29,8 +34,8 @@ app.get('/users/:id', function (req, res) {
     });
 });
 
-server.listen(3009,function(){
-    var host = server.address().address
-   var port = server.address().port
-   console.log("Example app listening at http://%s:%s", host, port)
-});
+// app.listen(3009,function(){
+//     var host = server.address().address
+//    var port = server.address().port
+//    console.log("Example app listening at http://%s:%s", host, port)
+// });
