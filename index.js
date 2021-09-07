@@ -51,14 +51,106 @@ app.get('/marksheet', function (req, res) {
 })
 
 app.get('/marksheet/:id', function (req, res) {
+    function findId(data, fid) {
 
+        var studentsArray = data.students;
+
+        console.log('array length:'+studentsArray.length);
+
+        console.log("id: "+ fid)
+
+        for (var i = 0; i < studentsArray.length-1; i++) {
+
+            if (studentsArray[i].id == fid) {
+
+                return (studentsArray[i]);
+
+                console.log(i);
+
+
+            }
+
+            // else {
+
+            //     console.log(i)
+
+            //     return ("Please Enter Valid Enrollment Number");
+
+            // }
+
+            console.log("loop checking: "+i)
+        }
+    }
     // First read existing users.
     fs.readFile(__dirname + "/" + "marksheet.json", 'utf8', function (err, data) {
-        var users = JSON.parse(data);
-        var user = users["students" + req.params.id]
+
+        var marksheet = JSON.parse(data);
+
+        var ffid = req.params.id;
+
+        console.log("id:" + ffid)
+
+        var user = findId(marksheet, ffid)
+
         console.log(user);
-        
-        res.end(JSON.stringify(user));
+
+        res.write(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Marksheet</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+        </head>
+        <body>
+        `);
+        if(user==undefined){
+            res.write(`<p class="text-center" >Enter valid user</p>`);
+        }
+        else{
+        res.write(` 
+            <div class="marksheet container">
+
+            <div class="head">
+
+                <h3 class="text-center text-uppercase top-header-statement">Statemant of marks</h3>
+
+            </div>
+
+            <hr/>
+
+            <div class="details">`);
+       
+        var name=user.name;
+        res.write(`
+            <div class="name">
+            ${name}
+            </div>
+            <div class="enroll">
+            ${user.id}
+            </div>
+            <div class="seat">
+            ${user.seat}
+            </div>
+
+            <div class="sem">
+            ${user.sem}
+            </div>
+            <div class="course">
+                
+            </div>
+        `);
+        }
+
+        res.write(`
+            </div>
+            </div>
+        </body>
+        </html>
+        `)
+        // res.end(JSON.stringify(user));
 
     });
 });
