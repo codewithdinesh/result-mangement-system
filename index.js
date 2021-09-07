@@ -7,24 +7,6 @@ server = require('http').createServer(app)
 
 app.get('/', function(req, res) {
     res.send('Welcome to Drsustii Restfull Api!');
-    
-var axios = require("axios").default;
-
-var options = {
-  method: 'GET',
-  url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/auto-complete',
-  params: {q: 'tesla', region: 'US'},
-  headers: {
-    'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
-    'x-rapidapi-key': '59ea4d09femsh20de79ae9ff3974p1fe345jsne88b07c38c15'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
 });
 
 app.get('/users',function(req,res){
