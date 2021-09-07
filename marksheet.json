@@ -1,0 +1,162 @@
+{
+    "students": [
+        {
+            "name": "Dinesh Rathod",
+            "id": 1900130081,
+            "seat":105501,
+            "marks":{
+                
+                "java":95,
+                "dcc":96,
+                "vb":88,
+                "mic":82,
+                "sen":92
+            },
+            "sem":"Fourt Sem"
+            
+       
+        },
+        {
+            "name": "Suresh Dnagi",
+            "id": 1900130011,
+            "seat":105502,
+            "marks":{
+                
+                "java":91,
+                "dcc":69,
+                "vb":76,
+                "mic":72,
+                "sen":62
+            },
+            "sem":"Fourt Sem"
+        },
+        {
+            "name": "Ramesh Chavan",
+            "id": 1900130012,
+            "seat":105503,
+            "marks":{
+                
+                "cpp":91,
+                "ds":92,
+                "dbms":83,
+                "dte":89,
+                "cgr":92
+            },
+            "sem":"third Sem"
+        },
+        {
+            "name": "Pawan Kumar",
+            "id": 1900130014,
+           
+            "marks":{
+                
+                "java":75,
+                "dcc":86,
+                "vb":81,
+                "mic":79,
+                "sen":90
+            },
+            "sem":"Fourt Sem",
+            "seat":105504
+        },
+        {
+            "name": "Rakesh Jite",
+            "id": 1900130090,
+            "seat":105541,
+            "marks":{
+                
+                "java":87,
+                "dcc":96,
+                "vb":82,
+                "mic":89,
+                "sen":80
+            },
+            "sem":"Fourt Sem"
+
+        },
+        {
+            "name": "Omkar Kurund",
+            "id": 1900130128,
+            "marks":{
+                
+                "java":85,
+                "dcc":97,
+                "vb":88,
+                "mic":90,
+                "sen":80
+            },
+            "sem":"Fourt Sem",
+            "seat":105505
+        },
+        {
+            "name": "Sanket Chindarkar",
+            "id": 1900130133,
+            "marks":{
+                
+                "java":95,
+                "dcc":97,
+                "vb":92,
+                "mic":90,
+                "sen":95
+            },
+            "sem":"Fourt Sem",
+            "seat":105506
+        },
+        {
+            "name": "Tejas Patil",
+            "id": 1900130122,
+            "marks":{
+                
+                "java":89,
+                "dcc":79,
+                "vb":80,
+                "mic":80,
+                "sen":75
+            },
+            "sem":"Fourt Sem",
+            "seat":105507
+        },
+        {
+            "name": "Nivedita Yelkar",
+            "id": 1900130080,
+            "marks":{
+                
+                "java":95,
+                "dcc":98,
+                "vb":81,
+                "mic":90,
+                "sen":87
+            },
+            "sem":"Fourt Sem",
+            "seat":105508
+        },
+        {
+            "name": "Lakshmi Sathe",
+            "id": 1900130082,
+            "marks":{
+                
+                "java":78,
+                "dcc":80,
+                "vb":75,
+                "mic":89,
+                "sen":90
+            },
+            "sem":"Fourt Sem",
+            "seat":105509
+        },
+        {
+            "name": "Sakshi Luman",
+            "id": 1900130119,
+            "marks":{
+                
+                "java":82,
+                "dcc":87,
+                "vb":91,
+                "mic":90,
+                "sen":70
+            },
+            "sem":"Fourt Sem",
+            "seat":105510
+        }
+    ]
+}
