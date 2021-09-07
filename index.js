@@ -31,6 +31,7 @@ app.get('/users/:id', function (req, res) {
        var user = users["user" + req.params.id] 
        console.log( user );
        res.end( JSON.stringify(user));
+       
     });
 });
 
