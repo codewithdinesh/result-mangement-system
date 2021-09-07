@@ -7,6 +7,7 @@ server = require('http').createServer(app)
 
 app.get('/', function(req, res) {
     res.send('Welcome to Drsustii Restfull Api!');
+    req.at
 });
 
 app.get('/users',function(req,res){
@@ -27,7 +28,7 @@ app.get('/users/:id', function (req, res) {
     });
 });
 
-server.listen(80,function(){
+server.listen(3000,function(){
     var host = server.address().address
    var port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
