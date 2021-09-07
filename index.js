@@ -2,11 +2,12 @@ var express=require('express')
 var app = express()
 var fs=require('fs')
 
+var http=require('http')
 server = require('http').createServer(app)
-// io = io.listen(server);
+// // io = io.listen(server);
 
 app.get('/', function(req, res) {
-    res.send('Welcome to Drsustii Restfull Api!');
+    res.send('MArksheet ApI');
     req.at
 });
 
@@ -28,7 +29,7 @@ app.get('/users/:id', function (req, res) {
     });
 });
 
-server.listen(3000,function(){
+server.listen(3009,function(){
     var host = server.address().address
    var port = server.address().port
    console.log("Example app listening at http://%s:%s", host, port)
