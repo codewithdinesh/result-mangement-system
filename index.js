@@ -19,11 +19,7 @@ app.get('/', function (req, response) {
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <title>Check Exam Result </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <style>
-        .btn:focus {
-            outline: none;
-          }
-        </style>
+       
     </head>
     <body>`);
     response.write(` <div class="container">
@@ -34,9 +30,9 @@ app.get('/', function (req, response) {
             <div class="mb-3 row">
                 
                 <div class="col-md-10 my-1">
-                <input type="text" class="form-control" id="search_term" placeholder="Enter Enrollment No.">
+                <input type="text" class="form-control shadow-none" id="search_term" placeholder="Enter Enrollment No.">
                 </div>
-                <button  class="col-md-2 col-form-label btn btn-primary my-1">Search</button>
+                <button  class="col-md-2 col-form-label btn btn-primary my-1 shadow-none">Search</button>
             </div>
         </div>
     </div>`);
@@ -109,9 +105,10 @@ app.get('/marksheet/:id', function (req, res) {
             <title>Marksheet</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
             <style>
-            .btn:focus {
-                outline: none;
-              }
+            .btn:focus,.btn:active ,input:focus ,input:active {
+                outline: none !important;
+                box-shadow: none;
+             }
             </style>
         </head>
         <body>
