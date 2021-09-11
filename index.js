@@ -348,8 +348,8 @@ app.get('/marksheet/:id', function (req, res) {
     });
 });
 const port=3000;
-app.listen(port, function () {
-    console.log("server starting at 3000")
+app.listen(port,()=>{
+    console.log("server starting at ",port)
 })
 
 function findId(data, fid) {
