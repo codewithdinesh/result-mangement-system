@@ -54,7 +54,7 @@ app.get('/', function (req, response) {
                 <div class="mb-3 row">
                 
                     <div class="col-md-10 my-1">
-                        <input type="text" name="search_id" class="form-control shadow-none" id="search_term" placeholder="Enter Enrollment No." required>
+                        <input type="text" maxlength="10" name="search_id" class="form-control shadow-none" id="search_term" placeholder="Enter Enrollment No." required>
                     </div>
                             <button  class="btn btn-md btn-default col-md-2  col-form-label  my-1 shadow-none" >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-align-center" viewBox="0 0 16 16">
@@ -99,6 +99,8 @@ app.get('/marksheet', function (req, res) {
         //redirect
         res.statusCode = 302;
         res.redirect('/');
+    
+   
         return;
 
     } else {
@@ -139,7 +141,32 @@ app.get('/marksheet', function (req, res) {
          <body>
          `);
 
-        if (student === undefined) {
+         if(search_term.length<10){
+            res.write(`
+            <div class="container my-4">
+            <div class="alert alert-danger" role="alert">
+            Please Enter 10 Digit Enrollment number
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                
+                    <a href="/">
+                        <button class="btn btn-success text-center ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                            </svg>
+                            Go Back to Search Page
+                        </button>
+                    </a>
+                </div>
+            </div>               
+            </div>`)
+
+
+        } else if (student === undefined) {
+           
+
             res.write(`
                 <div class="container my-4">
                 <div class="alert alert-danger" role="alert">
@@ -160,11 +187,14 @@ app.get('/marksheet', function (req, res) {
                     </div>
                 </div>               
                 </div>`)
-
+            
 
 
         }
         else {
+
+
+            
 
 
 
@@ -203,6 +233,7 @@ app.get('/marksheet', function (req, res) {
         ${student.marks}
         </div>
     `);
+        
         }
 
 
