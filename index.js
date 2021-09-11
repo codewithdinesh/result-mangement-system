@@ -10,11 +10,15 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//Adding favicon to Web app.
 
-var data = require('./marksheet.json');
+//set /favicon directory by public/images/favicon.ico and then us in html head file by /favicon href
+app.use('/favicon', express.static('public/images/favicon.ico'));
 
 
 
+
+var data = require('./data/marksheet.json');
 //Homepage Router 
 app.get('/', function (req, response) {
 
@@ -27,7 +31,7 @@ app.get('/', function (req, response) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="/favicon" type="image/x-icon">
         <title>Check Exam Result </title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
         <style>
@@ -94,41 +98,33 @@ app.get('/marksheet', function (req, res) {
 
 
     //CHECK if user nothing enter in inout box and click on submit button then current page redirect to current/home page
-    if (search_term == '') {
 
-        //redirect
-        res.statusCode = 302;
-        res.redirect('/');
-    
-   
-        return;
 
-    } else {
+    //array to store json data
+    var studentsArray = {};
 
-        //array to store json data
-        var studentsArray = {};
+    //seting the data to array
+    for (i in data) {
 
-        //seting the data to array
-        for (i in data) {
-
-            if (data.hasOwnProperty(i) && data[i] != "0") {
-                studentsArray[i] = data[i];
-
-            }
+        if (data.hasOwnProperty(i) && data[i] != "0") {
+            studentsArray[i] = data[i];
 
         }
 
-        //find out students marksheet by its id so i used my own function to find out user by its id
-        var student = findId(studentsArray, search_term);
+    }
 
-        //setting html 
-        res.write(`
+    //find out students marksheet by its id so i used my own function to find out user by its id
+    var student = findId(studentsArray, search_term);
+
+    //setting html 
+    res.write(`
          <!DOCTYPE html>
          <html lang="en">
          <head>
              <meta charset="UTF-8">
              <meta http-equiv="X-UA-Compatible" content="IE=edge">
              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <link rel="shortcut icon" href="/favicon" type="image/x-icon">
              <title>Marksheet</title>
              <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
              <style>
@@ -141,33 +137,31 @@ app.get('/marksheet', function (req, res) {
          <body>
          `);
 
-         if(search_term.length<10){
-            res.write(`
-            <div class="container my-4">
-            <div class="alert alert-danger" role="alert">
-            Please Enter 10 Digit Enrollment number
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                
-                    <a href="/">
-                        <button class="btn btn-success text-center ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-                                <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
-                            </svg>
-                            Go Back to Search Page
-                        </button>
-                    </a>
-                </div>
-            </div>               
-            </div>`)
-
-
-        } else if (student === undefined) {
-           
-
-            res.write(`
+    if (student === undefined) {
+        if (search_term != undefined) {
+            if (search_term.length < 10) {
+                res.write(`
+                    <div class="container my-4">
+                    <div class="alert alert-danger" role="alert">
+                    Please Enter 10 Digit Enrollment number
+                    </div>
+        
+                    <div class="row">
+                        <div class="col-12">
+                        
+                            <a href="/">
+                                <button class="btn btn-success text-center ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                                    </svg>
+                                    Go Back to Search Page
+                                </button>
+                            </a>
+                        </div>
+                    </div>               
+                    </div>`)
+            } else {
+                res.write(`
                 <div class="container my-4">
                 <div class="alert alert-danger" role="alert">
                 Please Enter Correct Enrollment Number !
@@ -187,22 +181,31 @@ app.get('/marksheet', function (req, res) {
                     </div>
                 </div>               
                 </div>`)
-            
+
+
+
+            }
+
+
 
 
         }
-        else {
-
-
-            
 
 
 
-            //Setup Marksheet Page
+    }
+    else {
 
 
 
-            res.write(` 
+
+
+
+        //Setup Marksheet Page
+
+
+
+        res.write(` 
         <div class="marksheet container">
 
         <div class="head">
@@ -215,7 +218,7 @@ app.get('/marksheet', function (req, res) {
 
         <div class="details">`);
 
-            res.write(`
+        res.write(`
         <div class="name">
         ${student.name}
         </div>
@@ -233,8 +236,8 @@ app.get('/marksheet', function (req, res) {
         ${student.marks}
         </div>
     `);
-        
-        }
+
+
 
 
 
@@ -259,8 +262,10 @@ app.get('/marksheet', function (req, res) {
 
 // marksheet page
 app.get('/marksheet', function (req, res) {
-    fs.readFile(__dirname + "/" + "marksheet.json", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/data/" + "marksheet.json", 'utf8', function (err, data) {
         // console.log(data);
+        res.write("<p> hello</p>")
+        res.write(err)
 
 
         res.end(data);
@@ -272,16 +277,18 @@ app.get('/marksheet', function (req, res) {
 app.get('/marksheet/:id', function (req, res) {
 
     // First read existing users.
-    fs.readFile(__dirname + "/" + "marksheet.json", 'utf8', function (err, data) {
+    fs.readFile(__dirname + "/data/" + "marksheet.json", 'utf8', function (err, data) {
 
         var marksheet = JSON.parse(data);
 
         //get id from url box by params
         var uid = req.params.id;
 
-        console.log("id:" + uid)
+        // console.log("id:" + uid)
 
         var user = findId(marksheet, uid)
+
+        
 
 
         res.write(`
@@ -291,6 +298,7 @@ app.get('/marksheet/:id', function (req, res) {
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="shortcut icon" href="/favicon" type="image/x-icon">
             <title>Marksheet</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
             <style>
@@ -302,6 +310,65 @@ app.get('/marksheet/:id', function (req, res) {
         </head>
         <body>
         `);
+
+        if (user === undefined) {
+            if (uid != undefined) {
+                if (uid.length < 10) {
+                    res.write(`
+                        <div class="container my-4">
+                        <div class="alert alert-danger" role="alert">
+                        Please Enter 10 Digit Enrollment number
+                        </div>
+            
+                        <div class="row">
+                            <div class="col-12">
+                            
+                                <a href="/">
+                                    <button class="btn btn-success text-center ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                                        </svg>
+                                        Go Back to Search Page
+                                    </button>
+                                </a>
+                            </div>
+                        </div>               
+                        </div>`)
+                } else {
+                    res.write(`
+                    <div class="container my-4">
+                    <div class="alert alert-danger" role="alert">
+                    Please Enter Correct Enrollment Number !
+                    </div>
+    
+                    <div class="row">
+                        <div class="col-12">
+                        
+                            <a href="/">
+                                <button class="btn btn-success text-center ">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                                    </svg>
+                                    Go Back to Search Page
+                                </button>
+                            </a>
+                        </div>
+                    </div>               
+                    </div>`)
+    
+    
+    
+                }
+    
+    
+    
+    
+            }
+    
+    
+    
+        }
+        else {
 
         res.write(` 
             <div class="marksheet container">
@@ -335,6 +402,7 @@ app.get('/marksheet/:id', function (req, res) {
             ${user.marks.java}
             </div>
         `);
+        }
 
 
         res.write(`
@@ -348,8 +416,8 @@ app.get('/marksheet/:id', function (req, res) {
     });
 });
 var port = process.env.PORT || 8080;
-app.listen(port,()=>{
-    console.log("server starting at ",port)
+app.listen(port, () => {
+    console.log("server starting at ", port)
 })
 
 function findId(data, fid) {
@@ -358,7 +426,7 @@ function findId(data, fid) {
 
 
     var i = 0;
-    console.log("length:" + studentsArray.length)
+    // console.log("length:" + studentsArray.length)
     while (i < studentsArray.length - 1) {
 
         // console.log("loop checking: " + i)
