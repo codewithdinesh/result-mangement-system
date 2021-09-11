@@ -347,7 +347,7 @@ app.get('/marksheet/:id', function (req, res) {
 
     });
 });
-const port=3000;
+var port = process.env.PORT || 8080;
 app.listen(port,()=>{
     console.log("server starting at ",port)
 })
