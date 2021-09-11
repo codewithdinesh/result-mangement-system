@@ -1,11 +1,10 @@
 {
-  "name": "Marksheet",
+  "name": "marksheet",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.17.1",
-    "axios": "^0.21.4"
+    "axios": "^0.21.4",
+    "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -14,5 +13,14 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codewithdinesh/examresult.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codewithdinesh/examresult/issues"
+  },
+  "homepage": "https://github.com/codewithdinesh/examresult#readme",
+  "description": ""
 }
