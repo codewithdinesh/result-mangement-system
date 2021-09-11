@@ -23,7 +23,7 @@ var data = require('./data/marksheet.json');
 app.get('/', function (req, response) {
 
     response.writeHead(200, { 'Content-Type': 'text/html' });
- 
+
 
     //Head of Html document
     response.write(`<!DOCTYPE html>
@@ -490,8 +490,7 @@ app.get('/marksheet', function (req, res) {
 app.get('/marksheet', function (req, res) {
     fs.readFile(__dirname + "/data/" + "marksheet.json", 'utf8', function (err, data) {
         // console.log(data);
-        res.write("<p> hello</p>")
-        res.write(err)
+
 
 
         res.end(data);
