@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Add New Student Marksheet</title>
+    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+        .btn:focus,
+        .btn:active,
+        input:focus,
+        input:active {
+            outline: none !important;
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container user-detail">
+
+        <div class="align-items-center h-100">
+            <div class="header col-md-12">
+
+                <h1 class="text-center my-2" style="color: rgb(255, 81, 0);">Add Student Examination Result Details
+            </div>
+            <hr>
+            <br>
+
+            <form class="row g-3" method="POST" action="/create">
+                <div class="col-md-8">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control shadow-none" id="name" name="name"
+                        placeholder="Dinesh Rathod" required>
+
+                </div>
+
+                <div class="col-md-4">
+                    <label for="enrollment_number" class="form-label">Enrollment Number</label>
+                    <div class="input-group ">
+
+                        <input type="text" class="form-control shadow-none" placeholder="1900130080" id="enrollment_no"
+                            name="id" required>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="seat_no" class="form-label">Seat Number</label>
+                    <input type="text" class="form-control shadow-none" id="seat_no" name="seat_no" placeholder="105500"
+                        required maxlength="6">
+                </div>
+                <div class="col-md-4">
+                    <label for="examination" class="form-label">Examination</label>
+                    <input type="text" class="form-control shadow-none" id="examination" name="examination"
+                        placeholder="Summer 2021" required>
+
+                </div>
+                <div class="col-md-3">
+                    <label for="sem" class="form-label">Semister</label>
+                    <input type="text" class="form-control shadow-none" id="semister" name="semister"
+                        placeholder="4th Sem" required>
+
+                </div>
+                <div class="col-md-8">
+                    <label for="name" class="form-label">Course</label>
+                    <input type="text" class="form-control shadow-none" id="course" name="course"
+                        placeholder="Diploma in Computer Engineering" required>
+
+                </div>
+
+                <div class="col-md-4">
+                    <label for="date" class="form-label">Date</label>
+
+
+                    <input type="date" class="form-control shadow-none" placeholder="9 Aug 2021" name="date" id="date"
+                        required>
+
+
+                </div>
+                <br>
+                <hr>
+                <span class="badge bg-secondary">FIll SUBJECTS DETAILS</span>
+
+
+                <div class="col-md-2">
+                    <label for="s1_title" class="form-label">Name of subject</label>
+                    <input type="text" class="form-control shadow-none" id="s1_title" name="s1_title"
+                        placeholder="Basic Science" required>
+
+                </div>
+                <div class="col-md-2">
+                    <label for="s1_marks" class="form-label">Marks</label>
+                    <input type="text" class="form-control shadow-none" id="s1_marks" name="s1_marks" placeholder="89"
+                        required>
+
+                </div>
+                <hr>
+
+                <div class="col-md-2">
+                    <label for="s2_title" class="form-label">Name of subject</label>
+                    <input type="text" class="form-control shadow-none" id="s2_title" name="s2_title" placeholder="Java"
+                        required>
+
+                </div>
+                <div class="col-md-2">
+                    <label for="s2_marks" class="form-label">Marks</label>
+                    <input type="text" class="form-control shadow-none" id="s2_marks" name="s2_marks" placeholder="91"
+                        required>
+
+                </div>
+                <hr>
+                <div class="col-md-2">
+                    <label for="s3_title" class="form-label">Name of subject</label>
+                    <input type="text" class="form-control shadow-none" id="s3_title" name="s3_title"
+                        placeholder="Python" required>
+
+                </div>
+                <div class="col-md-2">
+                    <label for="s3_marks" class="form-label">Marks</label>
+                    <input type="text" class="form-control shadow-none" id="s3_marks" name="s3_marks" placeholder="95"
+                        required>
+
+                </div>
+                <hr>
+
+                <div class="col-md-2">
+                    <label for="s4_title" class="form-label">Name of subject</label>
+                    <input type="text" class="form-control shadow-none" id="s4_title" name="s4_title"
+                        placeholder="Data Structure" required>
+
+                </div>
+                <div class="col-md-2">
+                    <label for="s4_marks" class="form-label">Marks</label>
+                    <input type="text" class="form-control shadow-none" id="s4_marks" name="s4_marks" placeholder="85"
+                        required>
+
+                </div>
+                <hr>
+                <div class="col-md-2">
+                    <label for="s5_title" class="form-label">Name of subject</label>
+                    <input type="text" class="form-control shadow-none" id="s5_title" name="s5_title"
+                        placeholder="Digital Technology" required>
+
+                </div>
+                <div class="col-md-2">
+                    <label for="s5_marks" class="form-label">Marks</label>
+                    <input type="text" class="form-control shadow-none" id="s5_marks" name="s5_marks" placeholder="98"
+                        required>
+
+                </div>
+                <hr>
+
+                <span class="badge bg-warning">FIll this if have, otherwise keep it blank</span>
+                <div class="col-md-2">
+                    <label for="s6_title" class="form-label">Name of subject</label>
+                    <input type="text" class="form-control shadow-none" id="s6_title" name="s6_title"
+                        placeholder="Data Structure">
+
+                </div>
+                <div class="col-md-2">
+                    <label for="s6_marks" class="form-label">Marks</label>
+                    <input type="text" class="form-control shadow-none" id="s6_marks" name="s6_marks" placeholder="85">
+
+                </div>
+
+                <div class="col-12">
+                    <button class="btn btn-success shadow-none" type="submit">Add User</button>
+                </div>
+                <div class="m-4">
+
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

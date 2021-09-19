@@ -1,20 +1,23 @@
 {
   "name": "marksheet",
-  "version": "1.0.0",
+  "version": "1.1.9",
   "main": "index.js",
   "dependencies": {
     "axios": "^0.21.4",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "mongoose": "^6.0.6",
     "nodemon": "^2.0.12",
+    "querystring": "^0.2.1",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Dinesh Rathod",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -24,5 +27,5 @@
     "url": "https://github.com/codewithdinesh/examresult/issues"
   },
   "homepage": "https://github.com/codewithdinesh/examresult#readme",
-  "description": ""
+  "description": "This is a Simple Result manage System built using nodejs and mongDB"
 }
