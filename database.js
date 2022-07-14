@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 
-const DB = 'mongodb+srv://dinesh:RathodDinesh@dinesh.nqph4.mongodb.net/marksheet?retryWrites=true&w=majority'
+const DB = 'add_your_db_string'
 port = 3000;
 
 mongoose.connect(DB, { useUnifiedTopology: true });
